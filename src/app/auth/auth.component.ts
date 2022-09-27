@@ -13,15 +13,18 @@ export class AuthComponent implements OnInit {
   constructor() { }
 
   getEmailErrorMessage() {
-
+    if (this.email.hasError('required')){
+      return 'You must enter a value.'
+    }
+    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
   getPasswordErrorMessage() {
-
+    return this.password.hasError('required') ? 'You must enter a password' : '';
   }
 
   onSubmit() {
-
+    
   }
 
   ngOnInit(): void {

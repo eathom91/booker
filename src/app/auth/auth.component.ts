@@ -24,7 +24,7 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit() {
-
+    //TODO
   }
 
   ngOnInit(): void {

@@ -9,6 +9,14 @@ export class AuthComponent implements OnInit {
 
   constructor() { }
 
+  getEmailErrorMessage() {
+
+  }
+
+  getPasswordErrorMessage() {
+    
+  }
+
   ngOnInit(): void {
   }
 

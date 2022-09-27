@@ -8,7 +8,7 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class AuthComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
   submitLabel = "Submit"
   constructor() { }
 

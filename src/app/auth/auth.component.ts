@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required, Validators.email]);
+  submitLabel = "Submit"
   constructor() { }
 
   getEmailErrorMessage() {
@@ -14,7 +17,11 @@ export class AuthComponent implements OnInit {
   }
 
   getPasswordErrorMessage() {
-    
+
+  }
+
+  onSubmit() {
+
   }
 
   ngOnInit(): void {

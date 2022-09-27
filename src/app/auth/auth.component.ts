@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,9 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
+  @Output() onSubmitEvent = new EventEmitter<any>();
+  @Input() submitLabel: string;
+  
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
 
@@ -16,15 +19,23 @@ export class AuthComponent implements OnInit {
     if (this.email.hasError('required')){
       return 'You must enter a value.'
     }
+
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
   getPasswordErrorMessage() {
-    return this.password.hasError('required') ? 'You must enter a password' : '';
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return '';
   }
 
   onSubmit() {
-    //TODO
+    this.onSubmitEvent.emit({
+      email: this.email.value,
+      password: this.password.value
+    })
   }
 
   ngOnInit(): void {
